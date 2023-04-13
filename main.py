@@ -10,7 +10,7 @@ class Game:
 		pygame.display.set_caption('Some game I think')
 		self.clock = pygame.time.Clock()
 
-		#self.level = Level()
+		self.level = Level()
 	
 
 	def run(self):
