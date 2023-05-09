@@ -7,7 +7,7 @@ class Game:
 		# general setup                 
 		pygame.init()
 		self.screen = pygame.display.set_mode((WIDTH,HEIGTH))
-		pygame.display.set_caption('Some game I think')
+		pygame.display.set_caption('Fever Dream')
 		self.clock = pygame.time.Clock()
 
 		self.level = Level()
@@ -20,7 +20,7 @@ class Game:
 					pygame.quit()
 					sys.exit()
 
-			self.screen.fill((0,0,0))
+			self.screen.fill(WATER_COLOR)
 			self.level.run()
 			pygame.display.update()
 			self.clock.tick(FPS)
