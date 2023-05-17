@@ -9,7 +9,7 @@ class Game:
 		self.screen = pygame.display.set_mode((WIDTH,HEIGTH))
 		pygame.display.set_caption('Fever Dream')
 		self.clock = pygame.time.Clock()
-
+ 
 		self.level = Level()
 	
 
