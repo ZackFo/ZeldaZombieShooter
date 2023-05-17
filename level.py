@@ -135,10 +135,15 @@ class Level:
 	def run(self):
 		# update and draw the game
 		self.visible_sprites.custom_draw(self.player)
-		self.visible_sprites.update()
-		self.visible_sprites.enemy_update(self.player)
-		self.player_attack_logic()
 		self.ui.display(self.player)
+		if self.player.health <= 0:
+			self.player.game_over()
+
+		else:
+			self.visible_sprites.update()
+			self.visible_sprites.enemy_update(self.player)
+			self.player_attack_logic()
+		
 
 
 class YSortCameraGroup(pygame.sprite.Group):

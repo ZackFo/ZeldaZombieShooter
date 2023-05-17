@@ -9,6 +9,8 @@ class Player(Entity):
 		self.image = pygame.image.load('graphics/test/player.png').convert_alpha()
 		self.rect = self.image.get_rect(topleft = pos)
 		self.hitbox = self.rect.inflate(0,-26)
+		self.display_surface = pygame.display.get_surface()
+		self.font = pygame.font.Font(UI_FONT,UI_FONT_SIZE)
 
 		# graphics setup
 		self.import_player_assets()
@@ -191,6 +193,20 @@ class Player(Entity):
 			self.energy += 0.005 * self.stats["magic"]
 		else:
 			self.energy = self.stats["energy"]
+
+	def game_over(self):
+		self.display_surface.fill((0,0,0))
+		text_surf = self.font.render("Game Over",False,TEXT_COLOR)
+
+		text_rect = text_surf.get_rect(center = (WIDTH // 2,HEIGTH // 2))
+
+		pygame.draw.rect(self.display_surface,UI_BG_COLOR,text_rect.inflate(15,15))
+		self.display_surface.blit(text_surf,text_rect)
+		pygame.draw.rect(self.display_surface,UI_BORDER_COLOR,text_rect.inflate(15,15),3)
+		self.image = pygame.image.load("graphics/death.png").convert_alpha()
+		self.rect = self.image.get_rect()
+		self.display_surface.blit(self.image,self.rect)
+		
 
 	def update(self):
 		self.input()
