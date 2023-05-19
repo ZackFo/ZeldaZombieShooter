@@ -10,3 +10,5 @@ f = use spell
 spacebar = melee attack
 
 movement keys = w, a, s, d
+
+m = open skill menu
