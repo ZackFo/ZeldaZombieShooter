@@ -4,8 +4,10 @@ from entity import Entity
 from support import *
 
 
+
+
 class Enemy(Entity):
-	def __init__(self,monster_name,pos,groups,obstacle_sprites,damage_player,trigger_death_particles):
+	def __init__(self,monster_name,pos,groups,obstacle_sprites,damage_player,trigger_death_particles,add_exp):
 
 		# general setup
 		super().__init__(groups)
@@ -32,6 +34,7 @@ class Enemy(Entity):
 		self.attack_radius = monster_info['attack_radius']
 		self.notice_radius = monster_info['notice_radius']
 		self.attack_type = monster_info['attack_type']
+		self.add_exp = add_exp
 
 		# player interaction
 		self.can_attack = True
@@ -126,7 +129,7 @@ class Enemy(Entity):
 		if self.health <= 0:
 			self.kill()
 			self.trigger_death_particles(self.rect.center,self.monster_name)
-
+			self.add_exp(self.exp)
 
 	def hit_reaction(self):
 		if not self.vulnerable:
