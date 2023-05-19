@@ -7,7 +7,7 @@ e = swap spell
 
 f = use spell
 
-spacebar = melee attack
+spacebar = melee attack/increase skill
 
 movement keys = w, a, s, d
 
